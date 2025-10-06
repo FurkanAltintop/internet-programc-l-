@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Page Title</title>
+</head>
+<body>
+<i> furkan ustanın mekanı <i><br>
+<img width ="400" height ="400" alt="resim yok"
+src="lib/images.png"
+
+<form action="index.html">
+  <label>firstname:<label/>
+  <input name ="firstname" type = "text" /><br />
+   <label>lastname:<label/>
+  <input name ="firstname" type = "text" /><br />
+   <label>email:<label/>
+  <input name ="firstname" type = "text" /><br />
+   <label>password:<label/>
+  <input name ="firstname" type = "text" /><br />
+  
+<table>
+ <tr>
+   <th>menü</th>
+   <th>fiyat</th>
+   </tr>
+   <tr>
+     <td>pizza</td>
+     <td>310tl</td>
+       </tr>
+       </table> 
+</body>
+</html>
