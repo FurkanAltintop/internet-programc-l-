@@ -6,7 +6,7 @@
     <title>🎬 IMDb Top 20 Dizi & Filmler (Açıklamalı)</title>
     
     <style>
-        /* Temel Ayarlar */
+
         body {
             font-family: 'Helvetica Neue', Arial, sans-serif;
             margin: 0;
@@ -14,17 +14,17 @@
             background-color: #121212;
             color: #e0e0e0;
             line-height: 1.6;
-            min-height: 100vh; /* Footer'ı aşağı itmek için */
+            min-height: 100vh; 
             display: flex;
             flex-direction: column;
         }
         
-        /* Header Stili */
+        
         .main-header {
             background-color: #1e1e1e;
             color: #ffffff;
             padding: 20px 0;
-            border-bottom: 3px solid #647a9c; /* Kırmızı Vurgu */
+            border-bottom: 3px solid #647a9c; 
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
         }
 
@@ -40,7 +40,7 @@
         .logo a {
             font-size: 1.8em;
             font-weight: bold;
-            color: #e50914; /* Logo Kırmızısı */
+            color: #e50914; 
             text-decoration: none;
             letter-spacing: 1px;
         }
@@ -57,9 +57,9 @@
             color: #ffffff;
         }
 
-        /* Ana İçerik */
+        
         .main-content {
-            flex-grow: 1; /* Ortadaki içeriğin tüm boşluğu doldurmasını sağlar */
+            flex-grow: 1; 
         }
 
         .container {
@@ -68,7 +68,6 @@
             padding: 0 20px;
         }
 
-        /* Footer Stili */
         .main-footer {
             background-color: #1e1e1e;
             color: #a0a0a0;
@@ -90,7 +89,7 @@
         }
 
         .contact-info a {
-            color: #e50914; /* Kırmızı İletişim Vurgusu */
+            color: #e50914; 
             text-decoration: none;
             transition: color 0.3s;
         }
@@ -100,7 +99,7 @@
         }
 
 
-        /* Mevcut Kart ve Başlık Stilleri (Değişmedi) */
+       
         h1 {
             text-align: center;
             color: #e50914; 
@@ -120,7 +119,7 @@
             padding-left: 10px;
         }
         
-        /* Kart Düzeni (Grid) */
+        
         .card-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); 
@@ -141,7 +140,7 @@
 
         .card-item:hover {
             box-shadow: 0 10px 25px rgba(229, 9, 20, 0.4); 
-            transform: translateY(-5px); /* Kartın hafifçe yükselmesi */
+            transform: translateY(-5px); 
         }
 
         .card-visible {
@@ -153,10 +152,10 @@
             flex-shrink: 0;
         }
         
-        /* POSTER RESMİ STİLİ - DÜZENLENDİ */
+       
         .card-image {
             width: 100%;
-            height: 300px; /* Sabit yükseklik */
+            height: 300px; 
             background-color: #333;
             overflow: hidden; 
             display: flex; 
@@ -167,10 +166,10 @@
         .card-image img {
             width: 100%;
             height: 100%;
-            object-fit: cover; /* Resmi keserek div'i doldurur */
+            object-fit: cover; 
             display: block;
         }
-        /* POSTER RESMİ STİLİ SONU */
+     
         
         .card-content {
             padding: 15px;
@@ -269,7 +268,7 @@
                 <div class="card-item" onclick="toggleDescription(this)">
                     <div class="card-visible" id="film-1">
                         <div class="card-image">
-                            <img src="img\esaretinbedeli.png" alt="Esaretin Bedeli Posteri">
+                            <img src="https://raw.githubusercontent.com/FurkanAltintop/internet-programc-l-/refs/heads/main/img/esaretinbedeli.png" alt="Esaretin Bedeli Posteri">
                         </div>
                         <div class="card-content"> 
                             <div class="card-title">Esaretin Bedeli (The Shawshank Redemption)</div>
@@ -284,7 +283,7 @@
                 <div class="card-item" onclick="toggleDescription(this)">
                     <div class="card-visible" id="film-2">
                         <div class="card-image">
-                            <img src="img\baba1.png" alt="Baba Posteri">
+                            <img src="https://raw.githubusercontent.com/FurkanAltintop/internet-programc-l-/refs/heads/main/img/baba1.png" alt="Baba Posteri">
                         </div>
                         <div class="card-content"> 
                             <div class="card-title">Baba (The Godfather)</div>
@@ -296,7 +295,7 @@
                 <div class="card-item" onclick="toggleDescription(this)">
                     <div class="card-visible" id="film-3">
                         <div class="card-image">
-                            <img src="img\darkknight.png" alt="Kara Şövalye Posteri">
+                            <img src="https://raw.githubusercontent.com/FurkanAltintop/internet-programc-l-/refs/heads/main/img/darkknight.png" alt="Kara Şövalye Posteri">
                         </div>
                         <div class="card-content">
                             <div class="card-title">Kara Şövalye (The Dark Knight)</div>
@@ -308,7 +307,7 @@
                 <div class="card-item" onclick="toggleDescription(this)">
                     <div class="card-visible" id="film-4">
                         <div class="card-image">
-                            <img src="img\baba2.png" alt="Baba 2 Posteri">
+                            <img src="https://raw.githubusercontent.com/FurkanAltintop/internet-programc-l-/refs/heads/main/img/baba2.png" alt="Baba 2 Posteri">
                         </div>
                         <div class="card-content">
                             <div class="card-title">Baba 2 (The Godfather: Part II)</div>
@@ -320,7 +319,7 @@
                 <div class="card-item" onclick="toggleDescription(this)">
                     <div class="card-visible" id="film-5">
                         <div class="card-image">
-                            <img src="img\12angrymen.png" alt="12 Öfkeli Adam Posteri">
+                            <img src="https://raw.githubusercontent.com/FurkanAltintop/internet-programc-l-/refs/heads/main/img/12angrymen.png" alt="12 Öfkeli Adam Posteri">
                         </div>
                         <div class="card-content">
                             <div class="card-title">12 Öfkeli Adam (12 Angry Men)</div>
@@ -332,7 +331,7 @@
                 <div class="card-item" onclick="toggleDescription(this)">
                     <div class="card-visible" id="film-6">
                         <div class="card-image">
-                            <img src="img\schindler.png" alt="Schindler'in Listesi Posteri">
+                            <img src="https://raw.githubusercontent.com/FurkanAltintop/internet-programc-l-/refs/heads/main/img/schindler.png" alt="Schindler'in Listesi Posteri">
                         </div>
                         <div class="card-content">
                             <div class="card-title">Schindler'in Listesi (Schindler's List)</div>
@@ -344,7 +343,7 @@
                 <div class="card-item" onclick="toggleDescription(this)">
                     <div class="card-visible" id="film-7">
                         <div class="card-image">
-                            <img src="img\lotr.png" alt="Yüzüklerin Efendisi: Kralın Dönüşü Posteri">
+                            <img src="https://raw.githubusercontent.com/FurkanAltintop/internet-programc-l-/refs/heads/main/img/lotr.png" alt="Yüzüklerin Efendisi: Kralın Dönüşü Posteri">
                         </div>
                         <div class="card-content">
                             <div class="card-title">Yüzüklerin Efendisi: Kralın Dönüşü</div>
@@ -356,7 +355,7 @@
                 <div class="card-item" onclick="toggleDescription(this)">
                     <div class="card-visible" id="film-8">
                         <div class="card-image">
-                            <img src="img\pulp.png" alt="Ucuz Roman Posteri">
+                            <img src="https://raw.githubusercontent.com/FurkanAltintop/internet-programc-l-/refs/heads/main/img/pulp.png" alt="Ucuz Roman Posteri">
                         </div>
                         <div class="card-content">
                             <div class="card-title">Ucuz Roman (Pulp Fiction)</div>
@@ -368,7 +367,7 @@
                 <div class="card-item" onclick="toggleDescription(this)">
                     <div class="card-visible" id="film-9">
                         <div class="card-image">
-                            <img src="img\iyi.png" alt="İyi, Kötü ve Çirkin Posteri">
+                            <img src="https://github.com/FurkanAltintop/internet-programc-l-/blob/main/img/iyi.png?raw=true" alt="İyi, Kötü ve Çirkin Posteri">
                         </div>
                         <div class="card-content">
                             <div class="card-title">İyi, Kötü ve Çirkin (The Good, the Bad and the Ugly)</div>
@@ -380,7 +379,7 @@
                 <div class="card-item" onclick="toggleDescription(this)">
                     <div class="card-visible" id="film-10">
                         <div class="card-image">
-                            <img src="img\dovus.png" alt="Dövüş Kulübü Posteri">
+                            <img src="https://github.com/FurkanAltintop/internet-programc-l-/blob/main/img/dovus.png?raw=true" alt="Dövüş Kulübü Posteri">
                         </div>
                         <div class="card-content">
                             <div class="card-title">Dövüş Kulübü (Fight Club)</div>
@@ -397,7 +396,7 @@
                 <div class="card-item" onclick="toggleDescription(this)">
                     <div class="card-visible" id="dizi-1">
                         <div class="card-image">
-                            <img src="img\bb.png" alt="Breaking Bad Posteri">
+                            <img src="https://github.com/FurkanAltintop/internet-programc-l-/blob/main/img/bb.png?raw=true" alt="Breaking Bad Posteri">
                         </div>
                         <div class="card-content"> 
                             <div class="card-title">Breaking Bad</div>
@@ -410,7 +409,7 @@
                 <div class="card-item" onclick="toggleDescription(this)">
                     <div class="card-visible" id="dizi-2">
                         <div class="card-image">
-                            <img src="img\band.png" alt="Band of Brothers Posteri">
+                            <img src="https://github.com/FurkanAltintop/internet-programc-l-/blob/main/img/band.png?raw=true" alt="Band of Brothers Posteri">
                         </div>
                         <div class="card-content"> 
                             <div class="card-title">Band of Brothers</div>
@@ -423,7 +422,7 @@
                 <div class="card-item" onclick="toggleDescription(this)">
                     <div class="card-visible" id="dizi-3">
                         <div class="card-image">
-                            <img src="img\cher.png" alt="Chernobyl Posteri">
+                            <img src="https://github.com/FurkanAltintop/internet-programc-l-/blob/main/img/cher.png?raw=true" alt="Chernobyl Posteri">
                         </div>
                         <div class="card-content">
                             <div class="card-title">Chernobyl</div>
@@ -436,7 +435,7 @@
                 <div class="card-item" onclick="toggleDescription(this)">
                     <div class="card-visible" id="dizi-4">
                         <div class="card-image">
-                            <img src="img\wire.png" alt="The Wire Posteri">
+                            <img src="https://github.com/FurkanAltintop/internet-programc-l-/blob/main/img/wire.png?raw=true" alt="The Wire Posteri">
                         </div>
                         <div class="card-content">
                             <div class="card-title">The Wire</div>
@@ -449,7 +448,7 @@
                 <div class="card-item" onclick="toggleDescription(this)">
                     <div class="card-visible" id="dizi-5">
                         <div class="card-image">
-                            <img src="img\avatar.png" alt="Avatar: Son Hava Bükücü Posteri">
+                            <img src="https://github.com/FurkanAltintop/internet-programc-l-/blob/main/img/avatar.png?raw=true" alt="Avatar: Son Hava Bükücü Posteri">
                         </div>
                         <div class="card-content">
                             <div class="card-title">Avatar: Son Hava Bükücü</div>
@@ -462,7 +461,7 @@
                 <div class="card-item" onclick="toggleDescription(this)">
                     <div class="card-visible" id="dizi-6">
                         <div class="card-image">
-                            <img src="img\sopranos.png" alt="The Sopranos Posteri">
+                            <img src="https://github.com/FurkanAltintop/internet-programc-l-/blob/main/img/sopranos.png?raw=true" alt="The Sopranos Posteri">
                         </div>
                         <div class="card-content">
                             <div class="card-title">The Sopranos</div>
@@ -475,7 +474,7 @@
                 <div class="card-item" onclick="toggleDescription(this)">
                     <div class="card-visible" id="dizi-7">
                         <div class="card-image">
-                            <img src="img\got.png" alt="Game of Thrones Posteri">
+                            <img src="https://github.com/FurkanAltintop/internet-programc-l-/blob/main/img/got.png?raw=true" alt="Game of Thrones Posteri">
                         </div>
                         <div class="card-content">
                             <div class="card-title">Game of Thrones</div>
@@ -488,7 +487,7 @@
                 <div class="card-item" onclick="toggleDescription(this)">
                     <div class="card-visible" id="dizi-8">
                         <div class="card-image">
-                            <img src="img\rm.png" alt="Rick and Morty Posteri">
+                            <img src="https://github.com/FurkanAltintop/internet-programc-l-/blob/main/img/rm.png?raw=true" alt="Rick and Morty Posteri">
                         </div>
                         <div class="card-content">
                             <div class="card-title">Rick and Morty</div>
@@ -501,7 +500,7 @@
                 <div class="card-item" onclick="toggleDescription(this)">
                     <div class="card-visible" id="dizi-9">
                         <div class="card-image">
-                            <img src="img\sherlock.png" alt="Sherlock Posteri">
+                            <img src="https://github.com/FurkanAltintop/internet-programc-l-/blob/main/img/sherlock.png?raw=true" alt="Sherlock Posteri">
                         </div>
                         <div class="card-content">
                             <div class="card-title">Sherlock</div>
@@ -514,7 +513,7 @@
                 <div class="card-item" onclick="toggleDescription(this)">
                     <div class="card-visible" id="dizi-10">
                         <div class="card-image">
-                            <img src="img\cosmos.png" alt="Cosmos Posteri">
+                            <img src="https://github.com/FurkanAltintop/internet-programc-l-/blob/main/img/cosmos.png?raw=true" alt="Cosmos Posteri">
                         </div>
                         <div class="card-content">
                             <div class="card-title">Cosmos: Bir Uzay Serüveni</div>
@@ -541,10 +540,10 @@
     <script>
         function toggleDescription(cardItem) {
             const description = cardItem.querySelector('.card-description');
-            // "show" sınıfını ekle/kaldır
+            
             description.classList.toggle('show');
             
-            // Kartın görsel olarak daha fazla öne çıkması için
+           
             cardItem.classList.toggle('active');
         }
     </script>
