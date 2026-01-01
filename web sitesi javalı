@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎬 IMDb Top 20 Dizi & Filmler (Açıklamalı)</title>
+    
+    <style>
+
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #121212;
+            color: #e0e0e0;
+            line-height: 1.6;
+            min-height: 100vh; 
+            display: flex;
+            flex-direction: column;
+        }
+        
+        
+        .main-header {
+            background-color: #1e1e1e;
+            color: #ffffff;
+            padding: 20px 0;
+            border-bottom: 3px solid #647a9c; 
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        }
+
+        .header-content {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo a {
+            font-size: 1.8em;
+            font-weight: bold;
+            color: #e50914; 
+            text-decoration: none;
+            letter-spacing: 1px;
+        }
+        
+        .nav-links a {
+            color: #e0e0e0;
+            text-decoration: none;
+            margin-left: 25px;
+            font-size: 1.1em;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: #ffffff;
+        }
+
+        
+        .main-content {
+            flex-grow: 1; 
+        }
+
+        .container {
+            max-width: 1300px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .main-footer {
+            background-color: #1e1e1e;
+            color: #a0a0a0;
+            padding: 30px 0;
+            border-top: 1px solid #333;
+            margin-top: 50px;
+        }
+
+        .footer-content {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 0 20px;
+            text-align: center;
+            font-size: 0.9em;
+        }
+        
+        .footer-content p {
+            margin: 5px 0;
+        }
+
+        .contact-info a {
+            color: #e50914; 
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .contact-info a:hover {
+            color: #ffffff;
+        }
+
+
+       
+        h1 {
+            text-align: center;
+            color: #e50914; 
+            font-size: 2.5em;
+            margin-bottom: 30px;
+            border-bottom: 2px solid #333;
+            padding-bottom: 15px;
+            letter-spacing: 1px;
+        }
+        
+        h2 {
+            color: #ffffff;
+            font-size: 1.8em;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            border-left: 5px solid #e50914; 
+            padding-left: 10px;
+        }
+        
+        
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); 
+            gap: 30px;
+            padding-top: 10px;
+        }
+        
+        .card-item {
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5); 
+            transition: box-shadow 0.3s ease, transform 0.3s ease;
+            position: relative; 
+        }
+
+        .card-item:hover {
+            box-shadow: 0 10px 25px rgba(229, 9, 20, 0.4); 
+            transform: translateY(-5px); 
+        }
+
+        .card-visible {
+            background-color: #1e1e1e;
+            text-align: left;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+            flex-shrink: 0;
+        }
+        
+       
+        .card-image {
+            width: 100%;
+            height: 300px; 
+            background-color: #333;
+            overflow: hidden; 
+            display: flex; 
+            align-items: center;
+            justify-content: center;
+        }
+
+        .card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; 
+            display: block;
+        }
+     
+        
+        .card-content {
+            padding: 15px;
+        }
+
+        .card-title {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #ffffff;
+            margin-bottom: 5px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .card-info {
+            font-size: 0.85em;
+            color: #a0a0a0;
+            margin-top: 5px;
+        }
+
+        .card-description {
+            background-color: #333;
+            color: #e0e0e0;
+            padding: 15px;
+            font-size: 0.9em;
+            line-height: 1.5;
+            display: none;
+            border-top: 1px solid #e50914;
+        }
+
+        .card-description.show {
+            display: block; 
+        }
+
+        /* MOBİL UYUMLULUK KURALLARI */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .nav-links {
+                margin-top: 10px;
+                width: 100%;
+                display: flex;
+                justify-content: space-around;
+            }
+            .nav-links a {
+                margin: 0;
+                font-size: 1em;
+            }
+            
+            .card-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); 
+                gap: 20px;
+            }
+
+            .container {
+                margin: 20px auto;
+            }
+            
+            h1 {
+                font-size: 1.8em;
+                padding-bottom: 10px;
+            }
+        }
+        
+        @media (max-width: 500px) {
+            .card-grid {
+                grid-template-columns: 1fr; 
+            }
+        }
+        .comments-section {
+    margin-top: 15px;
+    padding-top: 10px;
+    border-top: 1px solid #555;
+}
+
+.comments-section h4 {
+    color: #e50914;
+    margin-bottom: 8px;
+}
+
+.comment-item {
+    background: #222;
+    padding: 6px;
+    margin-bottom: 5px;
+    border-radius: 5px;
+    font-size: 0.85em;
+}
+
+.comment-item span {
+    color: #e50914;
+    font-weight: bold;
+}
+
+.comment-name,
+.comment-text {
+    width: 100%;
+    margin-bottom: 6px;
+    padding: 6px;
+    border-radius: 4px;
+    border: none;
+}
+
+.comments-section button {
+    background-color: #e50914;
+    color: white;
+    border: none;
+    padding: 6px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.delete-btn {
+    float: right;
+    background: transparent;
+    border: none;
+    color: #e50914;
+    cursor: pointer;
+    font-size: 0.8em;
+}
+
+    </style>
+    </head>
+<body>
+    
+    <header class="main-header">
+        <div class="header-content">
+            <div class="logo">
+                <a href="#">FİLM REHBERİ 🍿</a>
+            </div>
+            <nav class="nav-links">
+                <a href="#filmler">Filmler</a>
+                <a href="#diziler">Diziler</a>
+                <a href="#site-footer">Hakkımızda</a>
+            </nav>
+        </div>
+    </header>
+    <div class="main-content">
+        <div class="container">
+            <h1>🎬 IMDb Tüm Zamanların En Yüksek Puanlı Yapımları</h1>
+            
+            <h2 id="filmler">⭐ IMDb Top 10 Film</h2>
+            
+            <div class="card-grid">
+                <div class="card-item" onclick="toggleDescription(this)">
+                    <div class="card-visible" id="film-1">
+                        <div class="card-image">
+                            <img src="https://raw.githubusercontent.com/FurkanAltintop/internet-programc-l-/refs/heads/main/img/esaretinbedeli.png" alt="Esaretin Bedeli Posteri">
+                        </div>
+                        <div class="card-content"> 
+                            <div class="card-title">Esaretin Bedeli (The Shawshank Redemption)</div>
+                            <div class="card-info">Yıl: 1994 | Tür: Dram/Suç | Puan: 9.3</div>
+                        </div>
+                    </div>
+                    <div class="card-description">
+                        Genç bir bankacının, eşini ve sevgilisini öldürmekten haksız yere hüküm giyip, parmaklıklar ardındaki 20 yıllık esaret mücadelesini ve umudu asla kaybetmemesini konu edinir.
+                    </div>
+                </div>
+                
+                <div class="card-item" onclick="toggleDescription(this)">
+                    <div class="card-visible" id="film-2">
+                        <div class="card-image">
+                            <img src="https://raw.githubusercontent.com/FurkanAltintop/internet-programc-l-/refs/heads/main/img/baba1.png" alt="Baba Posteri">
+                        </div>
+                        <div class="card-content"> 
+                            <div class="card-title">Baba (The Godfather)</div>
+                            <div class="card-info">Yıl: 1972 | Tür: Suç/Dram | Puan: 9.2</div>
+                        </div>
+                    </div>
+                    <div class="card-description">New York'ta güçlü bir İtalyan mafya ailesinin lideri olan Don Vito Corleone'nin yaşamı, işleri ve en küçük oğlu Michael'ın ailenin başına geçiş süreci anlatılır.</div>
+                </div>
+                <div class="card-item" onclick="toggleDescription(this)">
+                    <div class="card-visible" id="film-3">
+                        <div class="card-image">
+                            <img src="https://raw.githubusercontent.com/FurkanAltintop/internet-programc-l-/refs/heads/main/img/darkknight.png" alt="Kara Şövalye Posteri">
+                        </div>
+                        <div class="card-content">
+                            <div class="card-title">Kara Şövalye (The Dark Knight)</div>
+                            <div class="card-info">Yıl: 2008 | Tür: Aksiyon/Dram | Puan: 9.0</div>
+                        </div>
+                    </div>
+                    <div class="card-description">Batman, Gotham şehrini kaosa sürükleyen ve şehir halkının ahlaki sınırlarını test eden psikopat suçlu Joker'e karşı mücadele etmek zorundadır.</div>
+                </div>
+                <div class="card-item" onclick="toggleDescription(this)">
+                    <div class="card-visible" id="film-4">
+                        <div class="card-image">
+                            <img src="https://raw.githubusercontent.com/FurkanAltintop/internet-programc-l-/refs/heads/main/img/baba2.png" alt="Baba 2 Posteri">
+                        </div>
+                        <div class="card-content">
+                            <div class="card-title">Baba 2 (The Godfather: Part II)</div>
+                            <div class="card-info">Yıl: 1974 | Tür: Suç/Dram | Puan: 9.0</div>
+                        </div>
+                    </div>
+                    <div class="card-description">Film, Michael Corleone'nin ailenin kontrolünü ele almasını ve geçmişte Don Vito Corleone'nin gençlik yıllarında New York'ta yükselişini paralel olarak anlatır.</div>
+                </div>
+                <div class="card-item" onclick="toggleDescription(this)">
+                    <div class="card-visible" id="film-5">
+                        <div class="card-image">
+                            <img src="https://raw.githubusercontent.com/FurkanAltintop/internet-programc-l-/refs/heads/main/img/12angrymen.png" alt="12 Öfkeli Adam Posteri">
+                        </div>
+                        <div class="card-content">
+                            <div class="card-title">12 Öfkeli Adam (12 Angry Men)</div>
+                            <div class="card-info">Yıl: 1957 | Tür: Dram | Puan: 9.0</div>
+                        </div>
+                    </div>
+                    <div class="card-description">Bir cinayet davası jürisinin, suçluluğu neredeyse kesin olan bir genç hakkında karar vermek için sıcak bir odada bir araya gelmesini ve tek bir jüri üyesinin şüpheleriyle tartışmanın başlamasını konu alır.</div>
+                </div>
+                <div class="card-item" onclick="toggleDescription(this)">
+                    <div class="card-visible" id="film-6">
+                        <div class="card-image">
+                            <img src="https://raw.githubusercontent.com/FurkanAltintop/internet-programc-l-/refs/heads/main/img/schindler.png" alt="Schindler'in Listesi Posteri">
+                        </div>
+                        <div class="card-content">
+                            <div class="card-title">Schindler'in Listesi (Schindler's List)</div>
+                            <div class="card-info">Yıl: 1993 | Tür: Biyografi/Dram | Puan: 9.0</div>
+                        </div>
+                    </div>
+                    <div class="card-description">2. Dünya Savaşı sırasında Nazi Partisi üyesi olan Oskar Schindler'in, Polonya'daki fabrikasında Yahudi mültecileri işe alarak hayatlarını kurtarma çabalarının gerçek hikayesidir.</div>
+                </div>
+                <div class="card-item" onclick="toggleDescription(this)">
+                    <div class="card-visible" id="film-7">
+                        <div class="card-image">
+                            <img src="https://raw.githubusercontent.com/FurkanAltintop/internet-programc-l-/refs/heads/main/img/lotr.png" alt="Yüzüklerin Efendisi: Kralın Dönüşü Posteri">
+                        </div>
+                        <div class="card-content">
+                            <div class="card-title">Yüzüklerin Efendisi: Kralın Dönüşü</div>
+                            <div class="card-info">Yıl: 2003 | Tür: Fantastik/Macera | Puan: 9.0</div>
+                        </div>
+                    </div>
+                    <div class="card-description">Orta Dünya'yı kurtarmak için Frodo ve Sam'in son görevini, diğer yandan Yüzük Kardeşliği üyelerinin Sauron'un ordularına karşı verdiği epik son savaşı anlatır.</div>
+                </div>
+                <div class="card-item" onclick="toggleDescription(this)">
+                    <div class="card-visible" id="film-8">
+                        <div class="card-image">
+                            <img src="https://raw.githubusercontent.com/FurkanAltintop/internet-programc-l-/refs/heads/main/img/pulp.png" alt="Ucuz Roman Posteri">
+                        </div>
+                        <div class="card-content">
+                            <div class="card-title">Ucuz Roman (Pulp Fiction)</div>
+                            <div class="card-info">Yıl: 1994 | Tür: Suç/Dram | Puan: 8.9</div>
+                        </div>
+                    </div>
+                    <div class="card-description">Los Angeles'ta geçen ve iki kiralık katil, bir gangsterin karısı ve bir boksör gibi suç dünyasından farklı karakterlerin hikayelerinin iç içe geçtiği post-modern bir film klasiğidir.</div>
+                </div>
+                <div class="card-item" onclick="toggleDescription(this)">
+                    <div class="card-visible" id="film-9">
+                        <div class="card-image">
+                            <img src="https://github.com/FurkanAltintop/internet-programc-l-/blob/main/img/iyi.png?raw=true" alt="İyi, Kötü ve Çirkin Posteri">
+                        </div>
+                        <div class="card-content">
+                            <div class="card-title">İyi, Kötü ve Çirkin (The Good, the Bad and the Ugly)</div>
+                            <div class="card-info">Yıl: 1966 | Tür: Western | Puan: 8.8</div>
+                        </div>
+                    </div>
+                    <div class="card-description">Amerikan İç Savaşı sırasında, kayıp bir altın hazinesinin peşindeki üç silahşörün zorlu ve hain mücadelelerini konu alan, sinema tarihinin en iyi Western'lerinden biridir.</div>
+                </div>
+                <div class="card-item" onclick="toggleDescription(this)">
+                    <div class="card-visible" id="film-10">
+                        <div class="card-image">
+                            <img src="https://github.com/FurkanAltintop/internet-programc-l-/blob/main/img/dovus.png?raw=true" alt="Dövüş Kulübü Posteri">
+                        </div>
+                        <div class="card-content">
+                            <div class="card-title">Dövüş Kulübü (Fight Club)</div>
+                            <div class="card-info">Yıl: 1999 | Tür: Dram/Gerilim | Puan: 8.8</div>
+                        </div>
+                    </div>
+                    <div class="card-description">Uykusuzluk çeken ve monoton hayatından sıkılan bir ofis çalışanının, sabun satıcısı Tyler Durden ile tanışmasının ardından illegal bir dövüş kulübü kurarak hayatını kökten değiştirmesini anlatır.</div>
+                </div>
+            </div> 
+            
+            <h2 id="diziler">📺 IMDb Top 10 Dizi</h2>
+            
+            <div class="card-grid">
+                <div class="card-item" onclick="toggleDescription(this)">
+                    <div class="card-visible" id="dizi-1">
+                        <div class="card-image">
+                            <img src="https://github.com/FurkanAltintop/internet-programc-l-/blob/main/img/bb.png?raw=true" alt="Breaking Bad Posteri">
+                        </div>
+                        <div class="card-content"> 
+                            <div class="card-title">Breaking Bad</div>
+                            <div class="card-info">Yıl: 2008-2013 | Tür: Suç/Dram | Puan: 9.5</div>
+                        </div>
+                    </div>
+                    <div class="card-description">Ölümcül evrede kanser olduğunu öğrenen kimya öğretmeni Walter White'ın, ailesine maddi güvence sağlamak amacıyla eski bir öğrencisiyle uyuşturucu üretmeye ve satmaya başlaması.</div>
+                </div>
+                
+                <div class="card-item" onclick="toggleDescription(this)">
+                    <div class="card-visible" id="dizi-2">
+                        <div class="card-image">
+                            <img src="https://github.com/FurkanAltintop/internet-programc-l-/blob/main/img/band.png?raw=true" alt="Band of Brothers Posteri">
+                        </div>
+                        <div class="card-content"> 
+                            <div class="card-title">Band of Brothers</div>
+                            <div class="card-info">Yıl: 2001 | Tür: Savaş/Dram | Puan: 9.4</div>
+                        </div>
+                    </div>
+                    <div class="card-description">ABD Ordusu 101. Hava İndirme Tümeni'ne bağlı Easy Bölüğü askerlerinin 2. Dünya Savaşı boyunca yaşadığı gerçek ve inanılmaz fedakarlık, dostluk ve savaş hikayesi.</div>
+                </div>
+
+                <div class="card-item" onclick="toggleDescription(this)">
+                    <div class="card-visible" id="dizi-3">
+                        <div class="card-image">
+                            <img src="https://github.com/FurkanAltintop/internet-programc-l-/blob/main/img/cher.png?raw=true" alt="Chernobyl Posteri">
+                        </div>
+                        <div class="card-content">
+                            <div class="card-title">Chernobyl</div>
+                            <div class="card-info">Yıl: 2019 | Tür: Tarihi/Dram | Puan: 9.3</div>
+                        </div>
+                    </div>
+                    <div class="card-description">1986 yılında Ukrayna'daki Çernobil nükleer santralinde yaşanan felaketin hemen sonrasını, olayın nedenlerini ve bu trajediyi durdurmak için hayatlarını tehlikeye atan kahramanları anlatır.</div>
+                </div>
+
+                <div class="card-item" onclick="toggleDescription(this)">
+                    <div class="card-visible" id="dizi-4">
+                        <div class="card-image">
+                            <img src="https://github.com/FurkanAltintop/internet-programc-l-/blob/main/img/wire.png?raw=true" alt="The Wire Posteri">
+                        </div>
+                        <div class="card-content">
+                            <div class="card-title">The Wire</div>
+                            <div class="card-info">Yıl: 2002-2008 | Tür: Suç/Gerilim | Puan: 9.3</div>
+                        </div>
+                    </div>
+                    <div class="card-description">Baltimore'da polis, uyuşturucu tacirleri, liman işçileri ve yerel yönetim arasındaki çekişmeyi, Amerikan şehir hayatının sosyal ve ekonomik problemlerini gerçekçi bir dille ele alır.</div>
+                </div>
+                
+                <div class="card-item" onclick="toggleDescription(this)">
+                    <div class="card-visible" id="dizi-5">
+                        <div class="card-image">
+                            <img src="https://github.com/FurkanAltintop/internet-programc-l-/blob/main/img/avatar.png?raw=true" alt="Avatar: Son Hava Bükücü Posteri">
+                        </div>
+                        <div class="card-content">
+                            <div class="card-title">Avatar: Son Hava Bükücü</div>
+                            <div class="card-info">Yıl: 2005-2008 | Tür: Animasyon/Aksiyon | Puan: 9.3</div>
+                        </div>
+                    </div>
+                    <div class="card-description">Dört ulusun barış içinde yaşadığı bir dünyada, Ateş Ulusu'nun savaşı başlatmasının ardından kayıp Avatar Aang'in dünyayı kurtarmak için yola çıkışını konu alır.</div>
+                </div>
+
+                <div class="card-item" onclick="toggleDescription(this)">
+                    <div class="card-visible" id="dizi-6">
+                        <div class="card-image">
+                            <img src="https://github.com/FurkanAltintop/internet-programc-l-/blob/main/img/sopranos.png?raw=true" alt="The Sopranos Posteri">
+                        </div>
+                        <div class="card-content">
+                            <div class="card-title">The Sopranos</div>
+                            <div class="card-info">Yıl: 1999-2007 | Tür: Suç/Dram | Puan: 9.2</div>
+                        </div>
+                    </div>
+                    <div class="card-description">New Jersey'li mafya lideri Tony Soprano'nun iş, aile hayatı ve psikolojik sorunları arasındaki dengeyi kurma mücadelesini, psikiyatristiyle olan seansları üzerinden aktarır.</div>
+                </div>
+
+                <div class="card-item" onclick="toggleDescription(this)">
+                    <div class="card-visible" id="dizi-7">
+                        <div class="card-image">
+                            <img src="https://github.com/FurkanAltintop/internet-programc-l-/blob/main/img/got.png?raw=true" alt="Game of Thrones Posteri">
+                        </div>
+                        <div class="card-content">
+                            <div class="card-title">Game of Thrones</div>
+                            <div class="card-info">Yıl: 2011-2019 | Tür: Fantastik/Dram | Puan: 9.2</div>
+                        </div>
+                    </div>
+                    <div class="card-description">Yazların ve kışların on yıllarca sürdüğü Westeros kıtasında, Yedi Krallık'ın demir tahtı için mücadele eden asil ailelerin entrika, savaş ve ihanet dolu hikayesi.</div>
+                </div>
+
+                <div class="card-item" onclick="toggleDescription(this)">
+                    <div class="card-visible" id="dizi-8">
+                        <div class="card-image">
+                            <img src="https://github.com/FurkanAltintop/internet-programc-l-/blob/main/img/rm.png?raw=true" alt="Rick and Morty Posteri">
+                        </div>
+                        <div class="card-content">
+                            <div class="card-title">Rick and Morty</div>
+                            <div class="card-info">Yıl: 2013- | Tür: Animasyon/Komedi | Puan: 9.1</div>
+                        </div>
+                    </div>
+                    <div class="card-description">Deli bilim insanı Rick Sanchez ve kolay etkilenen torunu Morty'nin, evrenler arası, zaman yolculuklu ve boyutlar arası çılgın maceraları.</div>
+                </div>
+                
+                <div class="card-item" onclick="toggleDescription(this)">
+                    <div class="card-visible" id="dizi-9">
+                        <div class="card-image">
+                            <img src="https://github.com/FurkanAltintop/internet-programc-l-/blob/main/img/sherlock.png?raw=true" alt="Sherlock Posteri">
+                        </div>
+                        <div class="card-content">
+                            <div class="card-title">Sherlock</div>
+                            <div class="card-info">Yıl: 2010-2017 | Tür: Gizem/Dram | Puan: 9.1</div>
+                        </div>
+                    </div>
+                    <div class="card-description">Ünlü İngiliz dedektif Sherlock Holmes'un modern Londra'da geçen hikayesinin uyarlamasıdır; Holmes ve askeri doktor yardımcısı Dr. John Watson, gizemli vakaları çözmek için işbirliği yapar.</div>
+                </div>
+                
+                <div class="card-item" onclick="toggleDescription(this)">
+                    <div class="card-visible" id="dizi-10">
+                        <div class="card-image">
+                            <img src="https://github.com/FurkanAltintop/internet-programc-l-/blob/main/img/cosmos.png?raw=true" alt="Cosmos Posteri">
+                        </div>
+                        <div class="card-content">
+                            <div class="card-title">Cosmos: Bir Uzay Serüveni</div>
+                            <div class="card-info">Yıl: 2014 | Tür: Belgesel | Puan: 9.0</div>
+                        </div>
+                    </div>
+                    <div class="card-description">Evrenin muazzamlığını, hayatın kökenlerini, bilimin tarihini ve geleceğini keşfeden, Neil deGrasse Tyson'ın sunuculuğunu yaptığı, bilimsel bilgiye odaklı popüler bir belgesel serisidir.</div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+    
+    <footer class="main-footer" id="site-footer">
+        <div class="footer-content">
+            <p>&copy; 2025 Film Rehberi | Tüm Hakları Saklıdır.</p>
+            <div class="contact-info">
+                <p>İletişim: <a href="mailto:destek@filmler.com">destek@filmler.com</a> | Telefon: <a href="tel:+905555555555">+90 (555) 555 55 55</a></p>
+                <p>IMDb verileri referans alınmıştır.</p>
+            </div>
+        </div>
+    </footer>
+  <script>
+function toggleDescription(cardItem) {
+    const description = cardItem.querySelector('.card-description');
+    description.classList.toggle('show');
+}
+
+function addComment(id, btn) {
+    event.stopPropagation();
+
+    const section = btn.closest('.comments-section');
+    const nameInput = section.querySelector('.comment-name');
+    const textInput = section.querySelector('.comment-text');
+
+    if (!nameInput.value || !textInput.value) {
+        alert("Lütfen ad ve yorum giriniz.");
+        return;
+    }
+
+    const comments = JSON.parse(localStorage.getItem(id)) || [];
+    comments.push({
+        name: nameInput.value,
+        text: textInput.value
+    });
+
+    localStorage.setItem(id, JSON.stringify(comments));
+
+    nameInput.value = '';
+    textInput.value = '';
+
+    loadComments(id);
+}
+
+function deleteComment(id, index) {
+    const comments = JSON.parse(localStorage.getItem(id)) || [];
+    comments.splice(index, 1);
+    localStorage.setItem(id, JSON.stringify(comments));
+    loadComments(id);
+}
+
+function loadComments(id) {
+    const section = document.querySelector(`.comments-section[data-id="${id}"]`);
+    const list = section.querySelector('.comment-list');
+    list.innerHTML = '';
+
+    const comments = JSON.parse(localStorage.getItem(id)) || [];
+
+    comments.forEach((c, index) => {
+        const div = document.createElement('div');
+        div.className = 'comment-item';
+        div.innerHTML = `
+            <span>${c.name}:</span> ${c.text}
+            <button class="delete-btn" onclick="deleteComment('${id}', ${index})">Sil</button>
+        `;
+        list.appendChild(div);
+    });
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+    document.querySelectorAll('.card-visible').forEach(card => {
+        const id = card.id;
+        const desc = card.parentElement.querySelector('.card-description');
+
+        const commentHTML = `
+<div class="comments-section" data-id="${id}" onclick="event.stopPropagation()">
+    <h4>💬 Yorumlar</h4>
+    <div class="comment-list"></div>
+    <input class="comment-name" placeholder="Adınız" onclick="event.stopPropagation()">
+    <textarea class="comment-text" placeholder="Yorumunuz" onclick="event.stopPropagation()"></textarea>
+    <button onclick="event.stopPropagation(); addComment('${id}', this)">Yorum Ekle</button>
+</div>`;
+
+
+        desc.insertAdjacentHTML('beforeend', commentHTML);
+        loadComments(id);
+    });
+});
+</script>
+
+
+</body>
+</html>
